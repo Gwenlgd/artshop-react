@@ -1,0 +1,14 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 5px 20px;
+  img {
+    height: 60px;
+  }
+
+  .namesite img {
+    height: 90px;
+  }
+}
