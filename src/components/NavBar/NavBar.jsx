@@ -40,15 +40,18 @@ function NavBar() {
       </Link>
       {/* find another classname or other way */}
       <div className="right-part">
-        <div className="search-bar"></div>
-        <SearchBar onSearch={handleSearch} />
-        <ul>
+        <div className="search-bar">
+          <SearchBar onSearch={handleSearch} />
+        </div>
+
+        {/* don't need? */}
+        {/* <ul>
           {searchResults.map((result) => (
             <li key={result.id}>
               <Link to={`/product/${result.id}`}>{result.title}</Link>
             </li>
           ))}
-        </ul>
+        </ul> */}
 
         <Link to="/">
           <img src={logoCart} alt="Shopping Cart" />

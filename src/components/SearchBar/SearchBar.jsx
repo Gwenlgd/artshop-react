@@ -72,31 +72,39 @@ function SearchBar({ onSearch }) {
   }
 
   return (
-    <section ref={searchContainerRef}>
-      <form className="search-bar-part" onSubmit={handleSubmit}>
-        <div className="search-container">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={query}
-            onChange={handleChange}
-          />
-          {query && filteredProducts.length > 0 && (
-            <ul className="search-results">
-              {filteredProducts.map((product) => (
-                <li key={product.id} onClick={handleClickOnProduct}>
-                  <Link to={`/product/${product.id}`}>
-                    {/* ?? show picture in small? */}
-                    {product.title} - {product.description.slice(0, 50) + "..."}
-                  </Link>{" "}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-        <button type="submit">Search</button>
-      </form>
-    </section>
+    <form
+      ref={searchContainerRef}
+      className="search-bar-part"
+      onSubmit={handleSubmit}
+    >
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search..."
+          value={query}
+          onChange={handleChange}
+        />
+        {query && filteredProducts.length > 0 && (
+          <ul className="search-results">
+            {filteredProducts.map((product) => (
+              <li key={product.id} onClick={handleClickOnProduct}>
+                <Link to={`/product/${product.id}`}>
+                  {/* ?? show picture in small? */}
+                  <div className="search-result-display">
+                    <div className="search-img">image</div>
+                    <div className="search-text">
+                      <strong>{product.title}</strong>{" "}
+                      {product.description.slice(0, 45) + "..."}
+                    </div>
+                  </div>
+                </Link>{" "}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+      <button type="submit">Search</button>
+    </form>
   );
 }
 
