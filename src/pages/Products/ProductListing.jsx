@@ -65,7 +65,10 @@ function ProductsListing() {
                   <h3>{product.title}</h3>
                   <p>{product.category}</p>
                 </div>
-                <div className="product-price">1000€</div>{" "}
+                <div className="product-price-type">
+                  <p>{product.price}</p>
+                  <p>{product.type}</p>
+                </div>
               </div>
             </Link>
           </div>

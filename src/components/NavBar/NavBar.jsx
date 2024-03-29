@@ -10,15 +10,17 @@ import SearchBar from "../SearchBar/SearchBar";
 
 import "./NavBar.css";
 function NavBar() {
-  const [products, setProducts] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
+  // const [products, setProducts] = useState([]);
+  // const [searchResults, setSearchResults] = useState([]);
+  const [products] = useState([]);
+  const [setSearchResults] = useState([]);
 
   // useEffect(() => {
   //   FetchAllProducts(setProducts, setSearchResults);
   // }, []);
 
   const handleSearch = (query) => {
-    setSearchQuery(query);
+    // setSearchQuery(query);
     // !! check to add more filters
     const results = products.filter(
       (product) =>

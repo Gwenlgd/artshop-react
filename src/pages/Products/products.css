@@ -37,3 +37,16 @@
   width: 30%;
   border: 1px solid;
 }
+
+.arrow-link {
+  /* position: relative; */
+  text-decoration: none;
+  color: black;
+  width: 20px;
+}
+
+.arrow-link::before {
+  content: "\2190";
+  /* position: absolute; */
+  /* left: -10px; */
+}
