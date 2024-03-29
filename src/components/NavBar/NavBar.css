@@ -1,0 +1,23 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 5px 20px;
+  img {
+    height: 60px;
+  }
+
+  .namesite img {
+    height: 70px;
+  }
+}
+
+.right-part {
+  display: flex;
+  align-items: center;
+
+  a {
+    margin-left: 50px;
+  }
+}
