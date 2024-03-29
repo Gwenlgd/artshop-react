@@ -8,7 +8,7 @@ function SearchBar({ onSearch }) {
   const [query, setQuery] = useState("");
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  // useRef : create this reference
+  // useRef : create an area as a reference
   const searchContainerRef = useRef(null);
 
   useEffect(() => {
@@ -31,13 +31,15 @@ function SearchBar({ onSearch }) {
       setQuery("");
       setFilteredProducts([]);
     }
+
     // add others event?
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("scroll", handleScroll);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("scroll", handleScroll);
+      // Worked, when clicked outside and scroll
+      window.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -47,7 +49,7 @@ function SearchBar({ onSearch }) {
   };
 
   const filterProducts = (query) => {
-    console.log(query);
+    // console.log(query);
     const filtered = products.filter(
       (product) =>
         product.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -61,31 +63,40 @@ function SearchBar({ onSearch }) {
     onSearch(query);
   };
 
+  // REMOVE DROPDOWN WHEN USER CLICK ON THE PRODUCT
+  function handleClickOnProduct() {
+    setQuery("");
+    setFilteredProducts([]);
+    const event = new Event("clickProduct");
+    document.dispatchEvent(event);
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="Search..."
-          value={query}
-          onChange={handleChange}
-        />
-        {/* Render the search results dropdown */}
-        {query && filteredProducts.length > 0 && (
-          <ul className="search-results">
-            {filteredProducts.map((product) => (
-              <li key={product.id}>
-                <Link to={`/product/${product.id}`}>
-                  {/* ?? show picture? */}
-                  {product.title} - {product.description.slice(0, 50) + "..."}
-                </Link>{" "}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-      <button type="submit">Search</button>
-    </form>
+    <section ref={searchContainerRef}>
+      <form className="search-bar-part" onSubmit={handleSubmit}>
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={query}
+            onChange={handleChange}
+          />
+          {query && filteredProducts.length > 0 && (
+            <ul className="search-results">
+              {filteredProducts.map((product) => (
+                <li key={product.id} onClick={handleClickOnProduct}>
+                  <Link to={`/product/${product.id}`}>
+                    {/* ?? show picture in small? */}
+                    {product.title} - {product.description.slice(0, 50) + "..."}
+                  </Link>{" "}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <button type="submit">Search</button>
+      </form>
+    </section>
   );
 }
 

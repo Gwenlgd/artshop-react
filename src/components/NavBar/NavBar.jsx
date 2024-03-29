@@ -1,21 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import logoHome from "../../assets/home.svg";
+// import logoHome from "../../assets/home.svg";
 import logoCart from "../../assets/cart22.svg";
 import nameSite from "../../assets/namesite3.svg";
 
 import SearchBar from "../SearchBar/SearchBar";
-import FetchAllProducts from "../FetchAllProducts/FetchAllProducts";
+// import FetchAllProducts from "../FetchAllProducts/FetchAllProducts";
 
 import "./NavBar.css";
 function NavBar() {
   const [products, setProducts] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
 
-  useEffect(() => {
-    FetchAllProducts(setProducts, setSearchResults);
-  }, []);
+  // useEffect(() => {
+  //   FetchAllProducts(setProducts, setSearchResults);
+  // }, []);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -30,25 +30,30 @@ function NavBar() {
 
   return (
     <div className="navbar">
-      <Link to="/">
+      {/* <Link to="/">
         <img src={logoHome} alt="Logo Home" />
-      </Link>
-      <div className="namesite">
-        <img src={nameSite} alt="name" />
-      </div>
-      <div className="search-bar"></div>
-      <SearchBar onSearch={handleSearch} />
-      <ul>
-        {searchResults.map((result) => (
-          <li key={result.id}>
-            <Link to={`/product/${result.id}`}>{result.title}</Link>
-          </li>
-        ))}
-      </ul>
-
+      </Link> */}
       <Link to="/">
-        <img src={logoCart} alt="Shopping Cart" />
+        <div className="namesite">
+          <img src={nameSite} alt="name" />
+        </div>
       </Link>
+      {/* find another classname or other way */}
+      <div className="right-part">
+        <div className="search-bar"></div>
+        <SearchBar onSearch={handleSearch} />
+        <ul>
+          {searchResults.map((result) => (
+            <li key={result.id}>
+              <Link to={`/product/${result.id}`}>{result.title}</Link>
+            </li>
+          ))}
+        </ul>
+
+        <Link to="/">
+          <img src={logoCart} alt="Shopping Cart" />
+        </Link>
+      </div>
     </div>
   );
 }

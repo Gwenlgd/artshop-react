@@ -9,6 +9,11 @@
   }
 
   .namesite img {
-    height: 90px;
+    height: 70px;
   }
+}
+
+.right-part {
+  display: flex;
+  align-items: center;
 }
