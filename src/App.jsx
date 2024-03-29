@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import IsAdmin from "./pages/IsAdmin/IsAdmin";
 import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
@@ -11,15 +11,16 @@ function App() {
   const role = localStorage.getItem("role");
 
   // !! problem, check it
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-  };
+  // const handleSearch = (query) => {
+  //   setSearchQuery(query);
+  // };
 
   return (
     <>
-      <NavBar onSearch={handleSearch} />
+      {/* <NavBar onSearch={handleSearch} /> */}
+      <NavBar />
       <button
         onClick={() => {
           localStorage.setItem("role", role === "admin" ? "" : "admin");

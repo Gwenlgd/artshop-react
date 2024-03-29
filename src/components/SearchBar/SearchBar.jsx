@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import FetchAllProducts from "../FetchAllProducts/FetchAllProducts";
-
 import "./SearchBar.css";
 
-function SearchBar({ onSearch }) {
+//!! check this : https://dev.to/aneeqakhan/throttling-and-debouncing-explained-1ocb
+// wait for the user to stop typing in order to start the query
+
+// function SearchBar({ onSearch }) {
+function SearchBar() {
   const [query, setQuery] = useState("");
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -49,7 +52,7 @@ function SearchBar({ onSearch }) {
   };
 
   const filterProducts = (query) => {
-    // console.log(query);
+    console.log(query);
     const filtered = products.filter(
       (product) =>
         product.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -60,7 +63,7 @@ function SearchBar({ onSearch }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSearch(query);
+    // onSearch(query);
   };
 
   // REMOVE DROPDOWN WHEN USER CLICK ON THE PRODUCT

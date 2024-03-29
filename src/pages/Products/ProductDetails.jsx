@@ -28,18 +28,27 @@ function ProductDetails() {
 
   return (
     <div className="product-details-page">
-      <Link to="/">Back</Link>
+      <Link className="arrow-link" to="/">
+        Back
+      </Link>
       <div className="product-details-container">
         <div className="one-product-image">image</div>
         <div className="product-infos">
           <div className="product-text">
             <h2>{product.title}</h2>
             <h3>{product.category}</h3>
+            <p>{product.type}</p>
             <p>{product.description}</p>
-            <div className="product-price">1000€</div>{" "}
+            <p>{product.price}</p>
+            <p>
+              Available: {product.quantity}{" "}
+              {product.quantity === 1 ? "piece" : "pieces"}
+            </p>
           </div>
         </div>
       </div>
+      {/* add something to choose the number of piece that the user would like to buy? */}
+      <button>Buy</button>
     </div>
   );
 }
