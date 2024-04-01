@@ -6,7 +6,6 @@ import ProductsListing from "./Products/ProductListing";
 function HomePage() {
   return (
     <div>
-      <h2>Home Page</h2>
       {/* <div className="imgtest">
         <img src={imgTest} alt="" />
       </div> */}

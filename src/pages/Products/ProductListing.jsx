@@ -47,13 +47,11 @@ function ProductsListing() {
   return (
     <div className="products-list">
       <Category
-        categories={[
-          "",
-          ...new Set(products.map((product) => product.category)),
-        ]}
+        categories={[...new Set(products.map((product) => product.category))]}
         selectedCategory={selectedCategory}
         onSelectCategory={handleCategoryChange}
       />
+      <h2 className="text-center">{selectedCategory}</h2>
       <p>{filteredProducts.length} products</p>
       <div className="products-list-container">
         {filteredProducts.map((product) => (

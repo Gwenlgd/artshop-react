@@ -1,28 +1,15 @@
 // import { useState } from "react";
-import "./App.css";
+import IsAdmin from "./pages/IsAdmin/IsAdmin";
 import { Route, Routes } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import HomePage from "./pages/HomePage";
-import ProductDetails from "./pages/Products/ProductDetails";
-import IsAdmin from "./pages/IsAdmin/IsAdmin";
-import UpdateProduct from "./pages/IsAdmin/UpdateProduct";
-// CHANGE FOR DELETE ? NOT NEED A PAGE FOR THAT NON?
-import DeleteProduct from "./pages/IsAdmin/DeleteProduct";
-import NotAllowed from "./pages/IsAdmin/NotAllowed";
 import NotFound from "./pages/NotFound";
+import NotAllowed from "./pages/IsAdmin/NotAllowed";
+import "./App.css";
+import ProductDetails from "./pages/Products/ProductDetails";
 
 function App() {
   const role = localStorage.getItem("role");
-  const navigate = useNavigate();
-
-  const handleButtonClick = () => {
-    if (role === "admin") {
-      navigate("/admin");
-    } else {
-      navigate("/NotAllowed");
-    }
-  };
 
   // !! problem, check it
   // const [searchQuery, setSearchQuery] = useState("");
@@ -35,16 +22,19 @@ function App() {
     <>
       {/* <NavBar onSearch={handleSearch} /> */}
       <NavBar />
-      <button onClick={handleButtonClick}>
+      <button
+        onClick={() => {
+          localStorage.setItem("role", role === "admin" ? "" : "admin");
+        }}
+      >
         Switch to {role === "admin" ? "User" : "Admin"}
       </button>
-
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
-        <Route path="/admin" element={<IsAdmin />} />
-        <Route path="/admin/update/:productId" element={<UpdateProduct />} />
-        <Route path="/admin/delete/:productId" element={<DeleteProduct />} />
+        <Route path="/admin" element={<IsAdmin />}>
+          <Route index element={<h1>Private!</h1>} />
+        </Route>
         <Route path="/notallowed" element={<NotAllowed />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
