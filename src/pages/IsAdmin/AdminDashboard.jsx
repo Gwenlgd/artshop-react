@@ -47,15 +47,29 @@ function AdminDashboard() {
   };
 
   const handleDeleteProduct = (productId) => {
-    const filteredProducts = products.filter(
-      (product) => product.id !== productId
-    );
-    setProducts(filteredProducts);
-    setDeleteMessage("Product has been deleted successfully.");
+    axios
+      .delete(`https://pro-mana.adaptable.app/products/${productId}`)
+      .then((response) => {
+        // check delete ok ?
+        if (response.status === 200) {
+          const filteredProducts = products.filter(
+            (product) => product.id !== productId
+          );
+          setProducts(filteredProducts);
+          setDeleteMessage("Product has been deleted successfully");
 
-    setTimeout(() => {
-      setDeleteMessage("");
-    }, 3000);
+          setTimeout(() => {
+            setDeleteMessage("");
+          }, 3000);
+        } else {
+          // Handle error if the delete request was not successful
+          console.error("Failed to delete product");
+        }
+      })
+      .catch((error) => {
+        // Handle error if the delete request fails
+        console.error("Error deleting product:", error);
+      });
   };
 
   return (
