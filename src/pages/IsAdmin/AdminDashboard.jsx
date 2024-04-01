@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Category from "../../components/Category/Category";
 
 function AdminDashboard() {
@@ -46,10 +44,6 @@ function AdminDashboard() {
   const handleUpdateProduct = (productId) => {
     console.log("Update product with ID:", productId);
     navigate(`/update/${productId}`);
-
-    setTimeout(() => {
-      setDeleteMessage("");
-    }, 1000);
   };
 
   const handleDeleteProduct = (productId) => {
@@ -57,15 +51,17 @@ function AdminDashboard() {
       (product) => product.id !== productId
     );
     setProducts(filteredProducts);
-    toast.success("Product has been deleted successfully.", {
-      autoClose: 3000,
-    }); // Show success toast
+    setDeleteMessage("Product has been deleted successfully.");
+
+    setTimeout(() => {
+      setDeleteMessage("");
+    }, 3000);
   };
 
   return (
     <div>
       <h1>Hey Admin, welcome back to your dashboard</h1>
-      <p>{deleteMessage}</p>
+      {deleteMessage && <p>{deleteMessage}</p>}
       <div className="products-list">
         <Category
           categories={[...new Set(products.map((product) => product.category))]}
