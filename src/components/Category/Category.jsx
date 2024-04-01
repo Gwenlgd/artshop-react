@@ -1,7 +1,8 @@
 // import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 function Category({ categories, selectedCategory, onSelectCategory }) {
+  console.log(categories);
   return (
     <div>
       <label htmlFor="category">Filter by category:</label>
@@ -22,10 +23,10 @@ function Category({ categories, selectedCategory, onSelectCategory }) {
 }
 
 // Use PropTypes.objectOf() for simpler validation
-Category.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedCategory: PropTypes.string.isRequired,
-  onSelectCategory: PropTypes.func.isRequired,
-};
+// Category.propTypes = {
+//   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+//   selectedCategory: PropTypes.string.isRequired,
+//   onSelectCategory: PropTypes.func.isRequired,
+// };
 
 export default Category;

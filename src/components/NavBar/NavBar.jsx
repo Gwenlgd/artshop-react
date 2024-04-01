@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // import logoHome from "../../assets/home.svg";
-import logoCart from "../../assets/cart22.svg";
+import logoCart from "../../assets/cart2.svg";
 import nameSite from "../../assets/namesite3.svg";
 
 import SearchBar from "../SearchBar/SearchBar";
