@@ -43,7 +43,7 @@ function AdminDashboard() {
 
   const handleUpdateProduct = (productId) => {
     console.log("Update product with ID:", productId);
-    navigate(`/update/${productId}`);
+    navigate(`/admin/update/${productId}`);
   };
 
   const handleDeleteProduct = (productId) => {

@@ -7,8 +7,6 @@ import HomePage from "./pages/HomePage";
 import ProductDetails from "./pages/Products/ProductDetails";
 import IsAdmin from "./pages/IsAdmin/IsAdmin";
 import UpdateProduct from "./pages/IsAdmin/UpdateProduct";
-// CHANGE FOR DELETE ? NOT NEED A PAGE FOR THAT NON?
-import DeleteProduct from "./pages/IsAdmin/DeleteProduct";
 import NotAllowed from "./pages/IsAdmin/NotAllowed";
 import NotFound from "./pages/NotFound";
 
@@ -44,7 +42,6 @@ function App() {
         <Route path="/product/:productId" element={<ProductDetails />} />
         <Route path="/admin" element={<IsAdmin />} />
         <Route path="/admin/update/:productId" element={<UpdateProduct />} />
-        <Route path="/admin/delete/:productId" element={<DeleteProduct />} />
         <Route path="/notallowed" element={<NotAllowed />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
