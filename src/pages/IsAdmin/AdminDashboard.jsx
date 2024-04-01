@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Category from "../../components/Category/Category";
+import "./admin.css";
 
 function AdminDashboard() {
   const [products, setProducts] = useState([]);
@@ -86,7 +87,7 @@ function AdminDashboard() {
         <p>{filteredProducts.length} products</p>
         <div className="products-list-container">
           {filteredProducts.map((product) => (
-            <div key={product.id} className="product-card">
+            <div key={product.id} className="product-card admin">
               <Link to={`/product/${product.id}`}>
                 <div className="product-image">image</div>
                 <div className="product-infos">
@@ -100,12 +101,14 @@ function AdminDashboard() {
                   </div>
                 </div>
               </Link>
-              <button onClick={() => handleUpdateProduct(product.id)}>
-                Update
-              </button>
-              <button onClick={() => handleDeleteProduct(product.id)}>
-                Delete
-              </button>
+              <div className="button-up-del">
+                <button onClick={() => handleUpdateProduct(product.id)}>
+                  Update
+                </button>
+                <button onClick={() => handleDeleteProduct(product.id)}>
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>

@@ -1,0 +1,17 @@
+/* ADMIN PART */
+
+.admin {
+  height: 450px;
+}
+.card-admin {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.button-up-del {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
