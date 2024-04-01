@@ -13,7 +13,7 @@ function ProductDetails() {
       const { data } = await axios.get(
         "https://pro-mana.adaptable.app/products/" + id
       );
-      console.log(data);
+      // console.log(data);
       setProduct(data);
     } catch (error) {
       console.log(error);
