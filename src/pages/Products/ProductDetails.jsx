@@ -3,8 +3,8 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { CartContext } from "../ShoppingCart/CartContext";
 
-// Display image, description, price, availability
-// Possibility to add to the shopping cart
+// !! NEED TO CHECK THE ADD QUANTITY, doesn't update on shopping card
+
 function ProductDetails() {
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
