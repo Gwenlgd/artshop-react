@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import { CartContext } from "../ShoppingCart/CartContext";
 
 // Display image, description, price, availability
 // Possibility to add to the shopping cart
 function ProductDetails() {
   const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
   const params = useParams();
+  const { addToCart } = useContext(CartContext);
 
   async function fetchOneProduct(id) {
     try {
@@ -23,6 +26,12 @@ function ProductDetails() {
   useEffect(() => {
     fetchOneProduct(params.productId);
   }, [params.productId]);
+
+  const handleAddToCart = (product) => {
+    const productWithQuantity = { ...product, quantity };
+    addToCart(productWithQuantity);
+    console.log("Product added to cart:", productWithQuantity);
+  };
 
   if (!product) return <p>No product</p>;
 
@@ -47,8 +56,17 @@ function ProductDetails() {
           </div>
         </div>
       </div>
-      {/* add something to choose the number of piece that the user would like to buy? */}
-      <button>Buy</button>
+      <div className="quantity-input">
+        <input
+          type="number"
+          min="1"
+          value={quantity}
+          onChange={(e) => setQuantity(e.target.value)}
+        />
+      </div>
+      <div className="button-buy">
+        <button onClick={() => handleAddToCart(product)}>Buy</button>
+      </div>
     </div>
   );
 }
