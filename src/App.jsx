@@ -9,10 +9,18 @@ import IsAdmin from "./pages/IsAdmin/IsAdmin";
 import UpdateProduct from "./pages/IsAdmin/UpdateProduct";
 import NotAllowed from "./pages/IsAdmin/NotAllowed";
 import NotFound from "./pages/NotFound";
+import AddProduct from "./pages/IsAdmin/AddProduct";
 
 function App() {
   const role = localStorage.getItem("role");
   const navigate = useNavigate();
+
+  // put it in AdminDashboard
+  // const [products, setProducts] = useState();
+
+  // function addProduct(product) {
+  //   setProduct([...products, product]);
+  // }
 
   const handleButtonClick = () => {
     if (role === "admin") {
@@ -42,6 +50,7 @@ function App() {
         <Route path="/product/:productId" element={<ProductDetails />} />
         <Route path="/admin" element={<IsAdmin />} />
         <Route path="/admin/update/:productId" element={<UpdateProduct />} />
+        <Route path="/admin/addproduct" element={<AddProduct />} />
         <Route path="/notallowed" element={<NotAllowed />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

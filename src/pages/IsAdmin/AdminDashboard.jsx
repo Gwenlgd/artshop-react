@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Category from "../../components/Category/Category";
 import "./admin.css";
+import myAPI from "../../services/api";
 
 function AdminDashboard() {
   const [products, setProducts] = useState([]);
@@ -11,13 +12,16 @@ function AdminDashboard() {
   const [deleteMessage, setDeleteMessage] = useState("");
   const navigate = useNavigate();
 
+  const handleAddProduct = () => {
+    navigate("/admin/addproduct");
+  };
+
   async function fetchAllProducts() {
     try {
-      const { data } = await axios.get(
-        "https://pro-mana.adaptable.app/products"
-      );
-      setProducts(data);
-      setFilteredProducts(data);
+      const productsData = await myAPI.getAllProducts();
+      setProducts(productsData);
+      console.log(productsData);
+      setFilteredProducts(productsData);
     } catch (error) {
       console.log(error);
     }
@@ -48,10 +52,9 @@ function AdminDashboard() {
   };
 
   const handleDeleteProduct = (productId) => {
-    axios
-      .delete(`https://pro-mana.adaptable.app/products/${productId}`)
+    myAPI
+      .delete(`/products/${productId}`)
       .then((response) => {
-        // check delete ok ?
         if (response.status === 200) {
           const filteredProducts = products.filter(
             (product) => product.id !== productId
@@ -73,16 +76,21 @@ function AdminDashboard() {
       });
   };
 
+  if (!products) return <p>Loading..</p>;
   return (
     <div>
       <h1>Hey Admin, welcome back to your dashboard</h1>
       {deleteMessage && <p>{deleteMessage}</p>}
+      <br />
+      <button onClick={handleAddProduct}>Add Product</button>
+      <br />
       <div className="products-list">
         <Category
           categories={[...new Set(products.map((product) => product.category))]}
           selectedCategory={selectedCategory}
           onSelectCategory={handleCategoryChange}
         />
+        <br />
         <h2 className="text-center">{selectedCategory}</h2>
         <p>{filteredProducts.length} products</p>
         <div className="products-list-container">
