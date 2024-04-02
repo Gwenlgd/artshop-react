@@ -49,52 +49,71 @@ function UpdateProduct() {
   };
 
   return (
-    <div>
+    <div className="container-update-product-page">
       <h2>Update Product</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input
-          type="text"
-          name="title"
-          value={product.title}
-          onChange={handleInputChange}
-        />
-        <label>Description:</label>
-        <textarea
-          name="description"
-          value={product.description}
-          onChange={handleInputChange}
-        />
-        <label>Price:</label>
-        <input
-          type="text"
-          name="price"
-          value={product.price}
-          onChange={handleInputChange}
-        />
-        <label>Quantity:</label>
-        <input
-          type="text"
-          name="quantity"
-          value={product.quantity}
-          onChange={handleInputChange}
-        />
-        <label>Category:</label>
-        <input
-          type="text"
-          name="category"
-          value={product.category}
-          onChange={handleInputChange}
-        />
-        <label>Type:</label>
-        <input
-          type="text"
-          name="type"
-          value={product.type}
-          onChange={handleInputChange}
-        />
-        <button type="submit">Update</button>
-      </form>
+      <div className="container-update-product">
+        <form onSubmit={handleSubmit}>
+          <div className="container-form-inputs">
+            <div className="form-left">
+              <label>Title:</label>
+              <input
+                type="text"
+                name="title"
+                value={product.title}
+                onChange={handleInputChange}
+              />
+              <label>Category:</label>
+              <select
+                name="category"
+                id="category"
+                value={product.category}
+                onChange={handleInputChange}
+              >
+                <option disabled value="-1">
+                  -- Add a category --
+                </option>
+                <option value="Abstract">Abstract</option>
+                <option value="Landscape">Landscape</option>
+                <option value="Portrait">Portrait</option>
+                <option value="Still Life">Still Life</option>
+                <option value="Surrealism">Surrealism</option>
+              </select>
+              <label>Description:</label>
+              <input
+                name="description"
+                value={product.description}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-right">
+              <label>Price:</label>
+              <input
+                type="text"
+                name="price"
+                value={product.price}
+                onChange={handleInputChange}
+              />
+              <label>Quantity:</label>
+              <input
+                type="text"
+                name="quantity"
+                value={product.quantity}
+                onChange={handleInputChange}
+              />
+              <label>Type:</label>
+              <input
+                type="text"
+                name="type"
+                value={product.type}
+                onChange={handleInputChange}
+              />
+            </div>
+          </div>
+          <div className="form-button">
+            <button type="submit">Update</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
