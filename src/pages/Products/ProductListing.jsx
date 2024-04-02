@@ -1,21 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import Category from "../../components/Category/Category";
 import "./products.css";
-import ShoppingCart from "../ShoppingCart/ShoppingCart";
-import myAPI from "../../services/api";
 import FetchAllProducts from "../../components/FetchAllProducts/FetchAllProducts";
-
-// !! NEED TO ADD
-// price
-// searchbar
+import { CartContext } from "../ShoppingCart/CartContext";
 
 function ProductsListing() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [cartItems, setCartItems] = useState([]);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     FetchAllProducts(setProducts, setFilteredProducts);
@@ -37,7 +31,8 @@ function ProductsListing() {
   }, [selectedCategory, products]);
 
   const handleAddToCart = (product) => {
-    setCartItems([...cartItems, product]);
+    addToCart(product);
+    console.log("Product added to cart:", product);
   };
 
   return (
@@ -71,6 +66,7 @@ function ProductsListing() {
           </div>
         ))}
       </div>
+      {/* <ShoppingCart cartItems={cartItems} /> */}
     </div>
   );
 }

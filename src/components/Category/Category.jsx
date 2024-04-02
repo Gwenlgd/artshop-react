@@ -2,7 +2,7 @@
 // import PropTypes from "prop-types";
 
 function Category({ categories, selectedCategory, onSelectCategory }) {
-  console.log(categories);
+  // console.log(categories);
   return (
     <div>
       <label htmlFor="category">Filter by category:</label>

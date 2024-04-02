@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,9 @@ import UpdateProduct from "./pages/IsAdmin/UpdateProduct";
 import NotAllowed from "./pages/IsAdmin/NotAllowed";
 import NotFound from "./pages/NotFound";
 import AddProduct from "./pages/IsAdmin/AddProduct";
+import ProductsListing from "./pages/Products/ProductListing";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
+import { CartProvider } from "./pages/ShoppingCart/CartContext";
 
 function App() {
   const role = localStorage.getItem("role");
@@ -20,29 +22,31 @@ function App() {
     if (role === "admin") {
       navigate("/admin");
     } else {
-      navigate("/NotAllowed");
+      navigate("/notallowed");
     }
   };
 
   return (
-    <>
-      {/* <NavBar onSearch={handleSearch} /> */}
-      <NavBar />
-      <button onClick={handleButtonClick}>
-        Switch to {role === "admin" ? "User" : "Admin"}
-      </button>
-
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/product/:productId" element={<ProductDetails />} />
-        <Route path="/admin" element={<IsAdmin />} />
-        <Route path="/admin/update/:productId" element={<UpdateProduct />} />
-        <Route path="/admin/addproduct" element={<AddProduct />} />
-        <Route path="/shoppingcart" element={<ShoppingCart />} />
-        <Route path="/notallowed" element={<NotAllowed />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </>
+    <CartProvider>
+      <>
+        {/* <NavBar onSearch={handleSearch} /> */}
+        <NavBar />
+        <button onClick={handleButtonClick}>
+          Switch to {role === "admin" ? "User" : "Admin"}
+        </button>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/product/:productId" element={<ProductDetails />} />
+          <Route path="/admin" element={<IsAdmin />} />
+          <Route path="/admin/update/:productId" element={<UpdateProduct />} />
+          <Route path="/admin/addproduct" element={<AddProduct />} />
+          <Route path="/" element={<ProductsListing />} />
+          <Route path="/shoppingcart" element={<ShoppingCart />} />
+          <Route path="/notallowed" element={<NotAllowed />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </>
+    </CartProvider>
   );
 }
 
