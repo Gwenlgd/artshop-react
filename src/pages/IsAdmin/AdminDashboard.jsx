@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import Category from "../../components/Category/Category";
 import "./admin.css";
 import myAPI from "../../services/api";
+import FetchAllProducts from "../../components/FetchAllProducts/FetchAllProducts";
 
 function AdminDashboard() {
   const [products, setProducts] = useState([]);
@@ -16,19 +16,8 @@ function AdminDashboard() {
     navigate("/admin/addproduct");
   };
 
-  async function fetchAllProducts() {
-    try {
-      const productsData = await myAPI.getAllProducts();
-      setProducts(productsData);
-      console.log(productsData);
-      setFilteredProducts(productsData);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   useEffect(() => {
-    fetchAllProducts();
+    FetchAllProducts(setProducts, setFilteredProducts);
   }, []);
 
   const handleCategoryChange = (category) => {

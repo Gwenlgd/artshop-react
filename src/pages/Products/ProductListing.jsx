@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Category from "../../components/Category/Category";
 import "./products.css";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import myAPI from "../../services/api";
+import FetchAllProducts from "../../components/FetchAllProducts/FetchAllProducts";
 
 // !! NEED TO ADD
 // price
@@ -12,21 +15,10 @@ function ProductsListing() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-
-  async function fetchAllProducts() {
-    try {
-      const { data } = await axios.get(
-        "https://pro-mana.adaptable.app/products"
-      );
-      setProducts(data);
-      setFilteredProducts(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    fetchAllProducts();
+    FetchAllProducts(setProducts, setFilteredProducts);
   }, []);
 
   const handleCategoryChange = (category) => {
@@ -43,6 +35,10 @@ function ProductsListing() {
       setFilteredProducts(filtered);
     }
   }, [selectedCategory, products]);
+
+  const handleAddToCart = (product) => {
+    setCartItems([...cartItems, product]);
+  };
 
   return (
     <div className="products-list">
@@ -69,6 +65,9 @@ function ProductsListing() {
                 </div>
               </div>
             </Link>
+            <div className="button-buy">
+              <button onClick={() => handleAddToCart(product)}>Buy</button>
+            </div>
           </div>
         ))}
       </div>
