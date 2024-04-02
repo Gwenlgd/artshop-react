@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "./CartContext";
 
-// Summary of items added to the cart
-// allowing users to adjust quantities, remove items, proceed to checkout
-// display price of each product (depending of quantity) + total price
-function ShoppingCart({ cartItems }) {
+function ShoppingCart() {
+  const { cartItems, removeFromCart } = useContext(CartContext);
+
   return (
     <div className="shopping-cart">
       <h2>Shopping Cart</h2>
       <ul>
-        {cartItems.map((item, index) => (
-          <li key={index}>
-            {item.title} - {item.price}
+        {cartItems.map((product) => (
+          <li key={product.id}>
+            {product.title} - {product.price}
+            <button onClick={() => removeFromCart(product.id)}>Remove</button>
           </li>
         ))}
       </ul>
     </div>
   );
 }
+
 export default ShoppingCart;
