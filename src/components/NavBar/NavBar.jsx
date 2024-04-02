@@ -6,18 +6,11 @@ import logoCart from "../../assets/cart2.svg";
 import nameSite from "../../assets/namesite3.svg";
 
 import SearchBar from "../SearchBar/SearchBar";
-// import FetchAllProducts from "../FetchAllProducts/FetchAllProducts";
 
 import "./NavBar.css";
 function NavBar() {
-  // const [products, setProducts] = useState([]);
-  // const [searchResults, setSearchResults] = useState([]);
   const [products] = useState([]);
   const [setSearchResults] = useState([]);
-
-  // useEffect(() => {
-  //   FetchAllProducts(setProducts, setSearchResults);
-  // }, []);
 
   const handleSearch = (query) => {
     // setSearchQuery(query);
@@ -55,7 +48,7 @@ function NavBar() {
           ))}
         </ul> */}
 
-        <Link to="/">
+        <Link to="/shoppingcart">
           <img src={logoCart} alt="Shopping Cart" />
         </Link>
       </div>

@@ -1,22 +1,23 @@
 /* ADMIN PART */
 
-.admin {
+/* .admin {
   height: 450px;
-}
+} */
 .card-admin {
   display: flex;
   justify-content: start;
   align-items: center;
 }
 
-.button-up-del {
+.button-up-del,
+.button-buy {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   margin-top: 20px;
 }
 
-/* UPDATE PRODUCT ADMIN */
+/* UPDATE & CREATE PRODUCT ADMIN */
 .container-add-product-page,
 .container-update-product-page {
   display: flex;
@@ -24,6 +25,7 @@
   justify-content: center;
   text-align: center;
 }
+
 .container-add-product,
 .container-update-product {
   border-radius: 20px;

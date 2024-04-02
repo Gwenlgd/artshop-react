@@ -10,17 +10,11 @@ import UpdateProduct from "./pages/IsAdmin/UpdateProduct";
 import NotAllowed from "./pages/IsAdmin/NotAllowed";
 import NotFound from "./pages/NotFound";
 import AddProduct from "./pages/IsAdmin/AddProduct";
+import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 
 function App() {
   const role = localStorage.getItem("role");
   const navigate = useNavigate();
-
-  // put it in AdminDashboard
-  // const [products, setProducts] = useState();
-
-  // function addProduct(product) {
-  //   setProduct([...products, product]);
-  // }
 
   const handleButtonClick = () => {
     if (role === "admin") {
@@ -29,13 +23,6 @@ function App() {
       navigate("/NotAllowed");
     }
   };
-
-  // !! problem, check it
-  // const [searchQuery, setSearchQuery] = useState("");
-
-  // const handleSearch = (query) => {
-  //   setSearchQuery(query);
-  // };
 
   return (
     <>
@@ -51,6 +38,7 @@ function App() {
         <Route path="/admin" element={<IsAdmin />} />
         <Route path="/admin/update/:productId" element={<UpdateProduct />} />
         <Route path="/admin/addproduct" element={<AddProduct />} />
+        <Route path="/shoppingcart" element={<ShoppingCart />} />
         <Route path="/notallowed" element={<NotAllowed />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
