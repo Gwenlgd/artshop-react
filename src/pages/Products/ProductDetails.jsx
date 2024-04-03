@@ -57,11 +57,11 @@ function ProductDetails() {
           <img src={product.image} alt="img" />
         </div>
         <div className="product-infos">
-          <div className="product-text">
+          <div className="product-text one-pro">
             <h2>{product.title}</h2>
             <h3>{product.category}</h3>
             <p>{product.type}</p>
-            <p>{product.description}</p>
+            <p className="descr-one-pro">{product.description}</p>
             <p>{product.price}</p>
             <p>
               Available: {product.quantity}{" "}
