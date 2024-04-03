@@ -9,7 +9,7 @@ function ProductDetails() {
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const params = useParams();
-  const { addToCart } = useContext(CartContext);
+  const { addToCartFromDetails } = useContext(CartContext);
 
   async function fetchOneProduct(id) {
     try {
@@ -27,9 +27,20 @@ function ProductDetails() {
     fetchOneProduct(params.productId);
   }, [params.productId]);
 
+  const handleQuantityChange = (e) => {
+    const newQuantity = parseInt(e.target.value);
+    if (!isNaN(newQuantity) && newQuantity >= 1) {
+      // Update the quantity state with the parsed value
+      setQuantity(newQuantity);
+    }
+  };
+
   const handleAddToCart = (product) => {
+    if (quantity < 1 || !product) {
+      return;
+    }
     const productWithQuantity = { ...product, quantity };
-    addToCart(productWithQuantity);
+    addToCartFromDetails(productWithQuantity);
     console.log("Product added to cart:", productWithQuantity);
   };
 
@@ -61,7 +72,9 @@ function ProductDetails() {
           type="number"
           min="1"
           value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
+          onChange={handleQuantityChange}
+
+          // onChange={(e) => setQuantity(parseInt(e.target.value))}
         />
       </div>
       <div className="button-buy">

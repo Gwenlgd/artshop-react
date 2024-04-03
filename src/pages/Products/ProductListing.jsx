@@ -9,7 +9,7 @@ function ProductsListing() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const { addToCart } = useContext(CartContext);
+  const { addToCartFromListing } = useContext(CartContext);
 
   useEffect(() => {
     FetchAllProducts(setProducts, setFilteredProducts);
@@ -30,9 +30,13 @@ function ProductsListing() {
     }
   }, [selectedCategory, products]);
 
-  const handleAddToCart = (product) => {
-    addToCart(product);
-    console.log("Product added to cart:", product);
+  // const handleAddToCart = (product) => {
+  //   addToCart(product, true);
+  //   console.log("Product added to cart:", product);
+  // };
+
+  const handleAddToCartFromListing = (product) => {
+    addToCartFromListing(product);
   };
 
   return (
@@ -61,7 +65,9 @@ function ProductsListing() {
               </div>
             </Link>
             <div className="button-buy">
-              <button onClick={() => handleAddToCart(product)}>Buy</button>
+              <button onClick={() => handleAddToCartFromListing(product)}>
+                Buy
+              </button>
             </div>
           </div>
         ))}
