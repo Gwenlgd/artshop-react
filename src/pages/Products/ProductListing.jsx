@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Category from "../../components/Category/Category";
 import "./products.css";
-import FetchAllProducts from "../../components/FetchAllProducts/FetchAllProducts";
+import FetchAllProducts from "../../components/FetchProducts/FetchAllProducts";
 import { CartContext } from "../ShoppingCart/CartContext";
 
 function ProductsListing() {
@@ -29,11 +29,6 @@ function ProductsListing() {
       setFilteredProducts(filtered);
     }
   }, [selectedCategory, products]);
-
-  // const handleAddToCart = (product) => {
-  //   addToCart(product, true);
-  //   console.log("Product added to cart:", product);
-  // };
 
   const handleAddToCartFromListing = (product) => {
     addToCartFromListing(product);
@@ -72,7 +67,6 @@ function ProductsListing() {
           </div>
         ))}
       </div>
-      {/* <ShoppingCart cartItems={cartItems} /> */}
     </div>
   );
 }
