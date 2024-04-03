@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const myAPI = axios.create({ baseURL: "https://pro-mana.adaptable.app" })
+const myAPI = axios.create({ baseURL: "https://projet-mana.adaptable.app" })
+// const myAPI = axios.create({ baseURL: "https://pro-mana.adaptable.app" })
 
 myAPI.getAllProducts = function () {
   return myAPI.get(
