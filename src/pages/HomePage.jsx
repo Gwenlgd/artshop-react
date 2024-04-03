@@ -1,5 +1,5 @@
 // import React from "react";
-import Hero from "../components/Hero/Hero";
+// import Hero from "../components/Hero/Hero";
 import ProductsListing from "./Products/ProductListing";
 // import imgTest from "../assets/painting1.png";
 // Display :
@@ -7,7 +7,7 @@ import ProductsListing from "./Products/ProductListing";
 function HomePage() {
   return (
     <div>
-      <Hero />
+      {/* <Hero /> */}
       {/* <div className="imgtest">
         <img src={imgTest} alt="" />
       </div> */}
