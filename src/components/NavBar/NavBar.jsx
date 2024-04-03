@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 // import logoHome from "../../assets/home.svg";
 import logoCart from "../../assets/cart2.svg";
 import nameSite from "../../assets/namesite3.svg";
-
 import SearchBar from "../SearchBar/SearchBar";
-
+import { CartContext } from "../../pages/ShoppingCart/CartContext";
 import "./NavBar.css";
+
 function NavBar() {
   const [products] = useState([]);
   const [setSearchResults] = useState([]);
+  const { cartItemCount } = useContext(CartContext);
+  const [itemAdded, setItemAdded] = useState(false);
 
   const handleSearch = (query) => {
     // setSearchQuery(query);
@@ -22,6 +23,17 @@ function NavBar() {
     );
     setSearchResults(results);
   };
+
+  useEffect(() => {
+    if (cartItemCount > 0) {
+      // Set the state to trigger the animation
+      setItemAdded(true);
+      // Reset the state after a short delay to allow the animation to complete
+      setTimeout(() => {
+        setItemAdded(false);
+      }, 300); // Adjust the delay to match the animation duration
+    }
+  }, [cartItemCount]);
 
   return (
     <div className="navbar">
@@ -50,6 +62,15 @@ function NavBar() {
 
         <Link to="/shoppingcart">
           <img src={logoCart} alt="Shopping Cart" />
+          {cartItemCount > 0 && (
+            <span
+              className={
+                itemAdded ? "cart-item-count item-added" : "cart-item-count"
+              }
+            >
+              {cartItemCount}
+            </span>
+          )}
         </Link>
       </div>
     </div>

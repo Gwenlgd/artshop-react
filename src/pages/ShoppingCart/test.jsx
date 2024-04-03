@@ -1,26 +1,74 @@
-import React, { createContext, useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import Category from "../../components/Category/Category";
+import "./products.css";
+import FetchAllProducts from "../../components/FetchAllProducts/FetchAllProducts";
+import { CartContext } from "../ShoppingCart/CartContext";
 
-const CartContext = createContext();
+function ProductsListing() {
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const { addToCart } = useContext(CartContext);
 
-const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    FetchAllProducts(setProducts, setFilteredProducts);
+  }, []);
 
-  const addToCart = (product) => {
-    setCartItems([...cartItems, product]);
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
   };
 
-  const removeFromCart = (productId) => {
-    const updatedCartItems = cartItems.filter(
-      (product) => product.id !== productId
-    );
-    setCartItems(updatedCartItems);
+  useEffect(() => {
+    if (selectedCategory === "") {
+      setFilteredProducts(products);
+    } else {
+      const filtered = products.filter(
+        (product) => product.category === selectedCategory
+      );
+      setFilteredProducts(filtered);
+    }
+  }, [selectedCategory, products]);
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    console.log("Product added to cart:", product);
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
-      {children}
-    </CartContext.Provider>
+    <div className="products-list">
+      <Category
+        categories={[...new Set(products.map((product) => product.category))]}
+        selectedCategory={selectedCategory}
+        onSelectCategory={handleCategoryChange}
+      />
+      <h2 className="text-center">{selectedCategory}</h2>
+      <p>{filteredProducts.length} products</p>
+      <div className="products-list-container">
+        {filteredProducts.map((product) => (
+          <div key={product.id} className="product-card">
+            <Link to={`/product/${product.id}`}>
+              <div className="product-image">image</div>
+              <div className="product-infos">
+                <div className="product-text">
+                  <h3>{product.title}</h3>
+                  <p>{product.category}</p>
+                </div>
+                <div className="product-price-type">
+                  <p>{product.price}</p>
+                  <p>{product.type}</p>
+                </div>
+              </div>
+            </Link>
+            <div className="button-buy">
+              <button onClick={() => handleAddToCart(product)}>Buy</button>
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* <ShoppingCart cartItems={cartItems} /> */}
+    </div>
   );
-};
+}
 
-export { CartProvider, CartContext };
+export default ProductsListing;

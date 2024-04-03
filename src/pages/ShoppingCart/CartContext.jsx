@@ -41,6 +41,11 @@ const CartProvider = ({ children }) => {
     setCartItems(updatedCartItems);
   };
 
+  const cartItemCount = cartItems.reduce(
+    (count, item) => count + item.quantity,
+    0
+  );
+
   return (
     <CartContext.Provider
       value={{
@@ -49,6 +54,7 @@ const CartProvider = ({ children }) => {
         removeFromCart,
         handleRemoveOne,
         handleAddOne,
+        cartItemCount,
       }}
     >
       {children}
