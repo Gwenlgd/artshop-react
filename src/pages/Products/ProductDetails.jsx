@@ -14,7 +14,8 @@ function ProductDetails() {
   async function fetchOneProduct(id) {
     try {
       const { data } = await axios.get(
-        "https://pro-mana.adaptable.app/products/" + id
+        "https://projet-mana.adaptable.app/products/" + id
+        // "https://pro-mana.adaptable.app/products/" + id
       );
       // console.log(data);
       setProduct(data);
@@ -52,7 +53,9 @@ function ProductDetails() {
         Back
       </Link>
       <div className="product-details-container">
-        <div className="one-product-image">image</div>
+        <div className="one-product-image">
+          <img src={product.image} alt="img" />
+        </div>
         <div className="product-infos">
           <div className="product-text">
             <h2>{product.title}</h2>
@@ -67,18 +70,20 @@ function ProductDetails() {
           </div>
         </div>
       </div>
-      <div className="quantity-input">
-        <input
-          type="number"
-          min="1"
-          value={quantity}
-          onChange={handleQuantityChange}
+      <div className="buy-product-details">
+        <div className="quantity-input">
+          <input
+            type="number"
+            min="1"
+            value={quantity}
+            onChange={handleQuantityChange}
 
-          // onChange={(e) => setQuantity(parseInt(e.target.value))}
-        />
-      </div>
-      <div className="button-buy">
-        <button onClick={() => handleAddToCart(product)}>Buy</button>
+            // onChange={(e) => setQuantity(parseInt(e.target.value))}
+          />
+        </div>
+        <div className="button-buy">
+          <button onClick={() => handleAddToCart(product)}>Buy</button>
+        </div>
       </div>
     </div>
   );

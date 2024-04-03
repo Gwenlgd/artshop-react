@@ -1,0 +1,10 @@
+.hero-container {
+  margin: 20px;
+  height: 600px;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  opacity: 0.6;
+}

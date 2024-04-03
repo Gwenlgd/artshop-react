@@ -39,7 +39,8 @@ function UpdateProduct() {
     event.preventDefault();
     try {
       await axios.put(
-        `https://pro-mana.adaptable.app/products/${productId}`,
+        `https://projet-mana.adaptable.app/products/${productId}`,
+        // `https://pro-mana.adaptable.app/products/${productId}`,
         product
       );
       navigate("/admin");

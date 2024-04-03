@@ -54,6 +54,8 @@ function AddProduct() {
     setQuantity("");
   };
 
+  const uploadImage = (files) => {};
+
   return (
     <div className="container-add-product-page">
       <form onSubmit={handleSubmit}>
@@ -101,6 +103,17 @@ function AddProduct() {
             id="image"
             value={image}
             onChange={handleImage}
+          />
+          {/* IMAGE TEST*/}
+          <input
+            name="image"
+            type="file"
+            placeholder="Image"
+            id="image"
+            value={image}
+            onChange={(event) => {
+              uploadImage(event.target.files);
+            }}
           />
           {/* PRICE */}
           <input
