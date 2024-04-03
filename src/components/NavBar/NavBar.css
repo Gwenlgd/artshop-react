@@ -21,3 +21,26 @@
     margin-left: 50px;
   }
 }
+
+.cart-icon {
+  position: relative;
+}
+
+.cart-item-count {
+  position: absolute;
+  top: 50px;
+  right: 60px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.cart-item-count {
+  transition: transform 0.3s ease;
+}
+
+.cart-item-count.item-added {
+  transform: scale(1.5);
+}
