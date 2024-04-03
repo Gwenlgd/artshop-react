@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import FetchAllProducts from "../FetchAllProducts/FetchAllProducts";
+import FetchAllProducts from "../FetchProducts/FetchAllProducts";
 import "./SearchBar.css";
 
 //!! check this : https://dev.to/aneeqakhan/throttling-and-debouncing-explained-1ocb

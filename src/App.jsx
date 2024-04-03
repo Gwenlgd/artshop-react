@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +13,7 @@ import AddProduct from "./pages/IsAdmin/AddProduct";
 import ProductsListing from "./pages/Products/ProductListing";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 import { CartProvider } from "./pages/ShoppingCart/CartContext";
+// import FavoritesPage from "./components/Favorites/FavoritesPage";
 
 function App() {
   const role = localStorage.getItem("role");
@@ -42,6 +43,7 @@ function App() {
           <Route path="/admin/addproduct" element={<AddProduct />} />
           <Route path="/" element={<ProductsListing />} />
           <Route path="/shoppingcart" element={<ShoppingCart />} />
+          {/* <Route path="/favoriteslist" element={<FavoritesPage />} /> */}
           <Route path="/notallowed" element={<NotAllowed />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

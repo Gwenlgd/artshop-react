@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Category from "../../components/Category/Category";
 import "./admin.css";
 import myAPI from "../../services/api";
-import FetchAllProducts from "../../components/FetchAllProducts/FetchAllProducts";
+import FetchAllProducts from "../../components/FetchProducts/FetchAllProducts";
 
+// ADD statistic ? total views, visits, orders, revenues
+// number of likes for each product?
 function AdminDashboard() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
