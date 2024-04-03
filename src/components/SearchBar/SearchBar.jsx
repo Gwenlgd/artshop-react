@@ -94,10 +94,13 @@ function SearchBar() {
                 <Link to={`/product/${product.id}`}>
                   {/* ?? show picture in small? */}
                   <div className="search-result-display">
-                    <div className="search-img">image</div>
+                    <div className="search-img">
+                      {" "}
+                      <img src={product.image} alt="img" />
+                    </div>
                     <div className="search-text">
                       <strong>{product.title}</strong>{" "}
-                      {product.description.slice(0, 45) + "..."}
+                      {product.description.slice(0, 120) + "..."}
                     </div>
                   </div>
                 </Link>{" "}

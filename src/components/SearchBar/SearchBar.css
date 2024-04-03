@@ -52,11 +52,22 @@
 }
 
 .search-img {
-  border: 1px solid;
-  height: 40px;
-  width: 40px;
-  background-color: #ccc;
+  height: 70px;
+  width: 90px;
+  /* background-color: #ccc; */
   margin-right: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.search-img img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
 }
 
 .search-text {
