@@ -60,18 +60,20 @@ function NavBar() {
           ))}
         </ul> */}
 
-        <Link to="/shoppingcart">
-          <img src={logoCart} alt="Shopping Cart" />
-          {cartItemCount > 0 && (
-            <span
-              className={
-                itemAdded ? "cart-item-count item-added" : "cart-item-count"
-              }
-            >
-              {cartItemCount}
-            </span>
-          )}
-        </Link>
+        <div className="cart-container">
+          <Link to="/shoppingcart">
+            <img src={logoCart} alt="Shopping Cart" />
+            {cartItemCount > 0 && (
+              <span
+                className={
+                  itemAdded ? "cart-item-count item-added" : "cart-item-count"
+                }
+              >
+                {cartItemCount}
+              </span>
+            )}
+          </Link>
+        </div>
       </div>
     </div>
   );

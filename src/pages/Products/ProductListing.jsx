@@ -45,23 +45,23 @@ function ProductsListing() {
       <p>{filteredProducts.length} products</p>
       <div className="products-list-container">
         {filteredProducts.map((product) => (
-          <div key={product.id} className="product-card">
+          <div key={product.id} className="product-card-list">
             <Link to={`/product/${product.id}`}>
-              <div className="product-image">
+              <div className="product-image-list">
                 <img src={product.image} alt="img" />
-              </div>
-              <div className="product-infos">
-                <div className="product-text">
-                  <h3>{product.title}</h3>
-                  <p>{product.category}</p>
-                </div>
-                <div className="product-price-type">
-                  <p>{product.price}</p>
-                  <p>{product.type}</p>
+                <div className="product-infos-list">
+                  <div className="product-text-list">
+                    <h3>{product.title}</h3>
+                    <p>{product.category}</p>
+                    {/* </div>
+                <div className="product-price-type-list"> */}
+                    <p>{product.price}</p>
+                    <p>{product.type}</p>
+                  </div>
                 </div>
               </div>
             </Link>
-            <div className="button-buy">
+            <div className="button-buy-list">
               <button onClick={() => handleAddToCartFromListing(product)}>
                 Buy
               </button>
