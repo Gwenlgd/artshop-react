@@ -53,7 +53,7 @@ function ProductsListing() {
         <h2 className="text-center">
           {selectedCategory === "" ? "All paintings" : selectedCategory}
         </h2>
-        <p>{filteredProducts.length} products</p>
+        <p>{filteredProducts.length} products available</p>
         <div className="products-list-container">
           {filteredProducts.map((product) => (
             <div key={product.id} className="product-card-list">
