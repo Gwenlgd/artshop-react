@@ -28,12 +28,12 @@ function Category({ categories, selectedCategory, onSelectCategory }) {
             <li>
               <Link to={"/admin/addproduct"}> Add a new product</Link>
             </li>
-            <li>
+            {/* <li>
               <h3>test</h3>
             </li>
             <li>
               <h3>test</h3>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

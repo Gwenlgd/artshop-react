@@ -22,3 +22,28 @@ footer {
 body {
   background-color: var(---bg-light-beige);
 }
+
+.thankyou-page-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 80%;
+}
+
+.thanks-message {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(---dark-beige);
+  h1 {
+    font-size: 4rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+}

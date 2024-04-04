@@ -70,7 +70,7 @@
   position: absolute;
   top: 75%;
   left: 50%;
-  margin-top: 30px;
+  margin-top: 40px;
   transform: translate(-50%, -75%);
   background: transparent;
   width: 50%;
@@ -98,7 +98,7 @@
 
 /*  PAGE DETAILS PRODUCT */
 .product-details-page {
-  margin: 100px 45px 0px 45px;
+  margin: 80px 45px 0px 45px;
 }
 .product-details-container {
   display: flex;
@@ -106,6 +106,7 @@
   align-items: center;
   margin: 3em;
   padding: 2em;
+  background-color: var(---bg-beige);
 
   h3,
   p {
@@ -131,11 +132,12 @@
 }
 
 .product-infos-one-pro {
+  background: transparent;
   width: 500px;
   /* border: 1px solid var(---dark-beige); */
   padding: 40px;
   /* box-shadow: 1px 4px 60px rgba(0, 0, 0, 0.2); */
-  box-shadow: 1px 1px 60px var(---bg-beige, 0.9);
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
   color: var(---blue-grey);
   border-radius: 4px;
 }
@@ -156,7 +158,8 @@
 
 .buy-product-details input,
 .buy-product-details button {
-  background: transparent;
+  background: var(---bg-light-beige);
+  opacity: 0.6;
   width: 100%;
   padding: 1em;
   margin: 1rem 0.5rem;
@@ -175,7 +178,7 @@
 
 .buy-product-details input {
   text-align: end;
-  width: 50%;
+  width: 30%;
 }
 
 .button-buy {
