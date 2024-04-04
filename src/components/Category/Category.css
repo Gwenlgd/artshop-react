@@ -1,0 +1,18 @@
+.container-categories {
+  margin-bottom: 20px;
+}
+
+.category-tabs {
+  display: flex;
+}
+
+.category-tabs div {
+  padding: 8px 16px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.category-tabs div.active {
+  background-color: #ccc;
+}
