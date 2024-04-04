@@ -18,3 +18,7 @@ li {
 footer {
   width: 100%;
 }
+
+body {
+  background-color: var(---bg-light-beige);
+}

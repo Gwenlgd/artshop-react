@@ -67,22 +67,22 @@ function ProductDetails() {
               Available: {product.quantity}{" "}
               {product.quantity === 1 ? "piece" : "pieces"}
             </p>
-          </div>
-        </div>
-      </div>
-      <div className="buy-product-details">
-        <div className="quantity-input">
-          <input
-            type="number"
-            min="1"
-            value={quantity}
-            onChange={handleQuantityChange}
+            <div className="buy-product-details">
+              <div className="quantity-input">
+                <input
+                  type="number"
+                  min="1"
+                  value={quantity}
+                  onChange={handleQuantityChange}
 
-            // onChange={(e) => setQuantity(parseInt(e.target.value))}
-          />
-        </div>
-        <div className="button-buy">
-          <button onClick={() => handleAddToCart(product)}>Buy</button>
+                  // onChange={(e) => setQuantity(parseInt(e.target.value))}
+                />
+              </div>
+              <div className="button-buy">
+                <button onClick={() => handleAddToCart(product)}>Buy</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

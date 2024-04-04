@@ -27,6 +27,8 @@ function App() {
     }
   };
 
+  const isHomePage = location.pathname === "/";
+
   return (
     <CartProvider>
       <>
@@ -44,11 +46,13 @@ function App() {
           <Route path="/notallowed" element={<NotAllowed />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <footer>
-          <button onClick={handleButtonClick}>
-            Switch to {role === "admin" ? "User" : "Admin"}
-          </button>
-        </footer>
+        {isHomePage && (
+          <footer>
+            <button onClick={handleButtonClick}>
+              Switch to {role === "admin" ? "User" : "Admin"}
+            </button>
+          </footer>
+        )}
       </>
     </CartProvider>
   );
