@@ -5,6 +5,7 @@ import logoCart from "../../assets/cart2.svg";
 import nameSite from "../../assets/namesite3.svg";
 import SearchBar from "../SearchBar/SearchBar";
 import { CartContext } from "../../pages/ShoppingCart/CartContext";
+import Category from "../Category/Category";
 import "./NavBar.css";
 
 function NavBar() {
@@ -12,6 +13,7 @@ function NavBar() {
   const [setSearchResults] = useState([]);
   const { cartItemCount } = useContext(CartContext);
   const [itemAdded, setItemAdded] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const handleSearch = (query) => {
     // setSearchQuery(query);

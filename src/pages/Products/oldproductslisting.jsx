@@ -40,7 +40,6 @@ function ProductsListing() {
         categories={[...new Set(products.map((product) => product.category))]}
         selectedCategory={selectedCategory}
         onSelectCategory={handleCategoryChange}
-        isTabs={false} // Render as dropdown select in the ProductsListing component
       />
       <h2 className="text-center">{selectedCategory}</h2>
       <p>{filteredProducts.length} products</p>

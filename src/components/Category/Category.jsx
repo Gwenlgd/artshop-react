@@ -1,32 +1,30 @@
-// import React from "react";
-// import PropTypes from "prop-types";
+import React from "react";
+import "./Category.css";
 
 function Category({ categories, selectedCategory, onSelectCategory }) {
-  // console.log(categories);
   return (
-    <div>
-      <label htmlFor="category">Filter by category:</label>
-      <select
-        id="category"
-        value={selectedCategory}
-        onChange={(e) => onSelectCategory(e.target.value)}
-      >
-        <option value="">All</option>
+    <div className="container-categories">
+      <div className="category-tabs">
+        {/* Tab for all products */}
+        <div
+          className={selectedCategory === "" ? "active" : ""}
+          onClick={() => onSelectCategory("")}
+        >
+          All
+        </div>
+        {/* Tabs for categories */}
         {categories.map((category, index) => (
-          <option key={index} value={category}>
+          <div
+            key={index}
+            className={selectedCategory === category ? "active" : ""}
+            onClick={() => onSelectCategory(category)}
+          >
             {category}
-          </option>
+          </div>
         ))}
-      </select>
+      </div>
     </div>
   );
 }
-
-// Use PropTypes.objectOf() for simpler validation
-// Category.propTypes = {
-//   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
-//   selectedCategory: PropTypes.string.isRequired,
-//   onSelectCategory: PropTypes.func.isRequired,
-// };
 
 export default Category;
