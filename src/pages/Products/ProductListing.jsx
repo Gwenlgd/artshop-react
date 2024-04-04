@@ -9,6 +9,7 @@ function ProductsListing() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
   const { addToCartFromListing } = useContext(CartContext);
 
   useEffect(() => {
@@ -32,6 +33,10 @@ function ProductsListing() {
 
   const handleAddToCartFromListing = (product) => {
     addToCartFromListing(product);
+    setShowMessage(true);
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 2000);
   };
 
   return (
@@ -76,6 +81,9 @@ function ProductsListing() {
           ))}
         </div>
       </div>
+      {showMessage && (
+        <div className="cart-message">Painting added to cart!</div>
+      )}
     </div>
   );
 }

@@ -13,6 +13,7 @@ import AddProduct from "./pages/IsAdmin/AddProduct";
 import ProductsListing from "./pages/Products/ProductListing";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 import { CartProvider } from "./pages/ShoppingCart/CartContext";
+import ThankyouPage from "./pages/ThankyouPage";
 // import FavoritesPage from "./components/Favorites/FavoritesPage";
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Route path="/" element={<ProductsListing />} />
           <Route path="/shoppingcart" element={<ShoppingCart />} />
           {/* <Route path="/favoriteslist" element={<FavoritesPage />} /> */}
+          <Route path="/thankyoupage" element={<ThankyouPage />} />
           <Route path="/notallowed" element={<NotAllowed />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
