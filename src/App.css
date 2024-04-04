@@ -14,3 +14,7 @@ ul {
 li {
   list-style: none;
 }
+
+footer {
+  width: 100%;
+}

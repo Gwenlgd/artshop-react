@@ -1,5 +1,10 @@
 .container-categories {
   margin-bottom: 20px;
+  width: 100%;
+  background-color: black;
+  z-index: 999;
+  position: fixed;
+  top: 84px;
 }
 
 .category-tabs {
@@ -8,11 +13,11 @@
 
 .category-tabs div {
   padding: 8px 16px;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
+  color: white;
   cursor: pointer;
 }
 
 .category-tabs div.active {
   background-color: #ccc;
+  color: black;
 }
