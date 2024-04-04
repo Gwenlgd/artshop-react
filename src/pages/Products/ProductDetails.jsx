@@ -56,7 +56,7 @@ function ProductDetails() {
         <div className="one-product-image">
           <img src={product.image} alt="img" />
         </div>
-        <div className="product-infos">
+        <div className="product-infos-one-pro">
           <div className="product-text one-pro">
             <h2>{product.title}</h2>
             <h3>{product.category}</h3>

@@ -115,15 +115,28 @@
 
 .one-product-image {
   /* change height and width when image ok */
-  height: 500px;
+  height: 600px;
   display: flex;
   justify-content: center;
   overflow: hidden;
 }
 
+.one-product-image {
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+}
 .one-product-image img {
   max-height: 100%;
   max-width: auto;
+  border-radius: 4px;
+}
+
+.product-infos-one-pro {
+  width: 500px;
+  /* border: 1px solid var(---dark-beige); */
+  padding: 40px;
+  /* box-shadow: 1px 4px 60px rgba(0, 0, 0, 0.2); */
+  box-shadow: 1px 1px 60px var(---bg-beige, 0.9);
+  color: var(---blue-grey);
   border-radius: 4px;
 }
 
@@ -135,6 +148,34 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /* .button-buy button {
+    margin: 0;
+  } */
+}
+
+.buy-product-details input,
+.buy-product-details button {
+  background: transparent;
+  width: 100%;
+  padding: 1em;
+  margin: 1rem 0.5rem;
+  border: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5000px;
+  backdrop-filter: blur(5px);
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+  /* color: var(---dark-beige); */
+  color: var(---blue-grey);
+
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.buy-product-details input {
+  text-align: end;
+  width: 50%;
 }
 
 .button-buy {

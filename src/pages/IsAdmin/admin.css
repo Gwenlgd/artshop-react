@@ -71,12 +71,17 @@
   align-items: center;
 }
 
-.button-up-del,
-.button-buy {
+.button-up-del {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   margin-top: 20px;
+}
+
+.button-buy {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 /* UPDATE & CREATE PRODUCT ADMIN */
