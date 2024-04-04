@@ -7,6 +7,25 @@
   justify-content: center;
 }
 
+.display-no-cart {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-55%, -50%);
+}
+
+.no-cart-message {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(---dark-beige);
+  h1 {
+    font-size: 4rem;
+  }
+}
+
 .shopping-cart {
   align-items: start;
 }

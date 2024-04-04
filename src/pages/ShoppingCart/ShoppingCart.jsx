@@ -13,7 +13,9 @@ function ShoppingCart() {
   if (!cartItems || cartItems.length === 0)
     return (
       <div className="display-no-cart">
-        <h3>No product in your shoppping cart</h3>
+        <div className="no-cart-message">
+          <h3>No product in your shoppping cart</h3>
+        </div>
       </div>
     );
 
