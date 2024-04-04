@@ -1,7 +1,12 @@
-.products-list {
-  margin: 10px;
+.main-products-container {
+  margin: 140px 45px 0px 45px;
+
+  h2 {
+    text-align: center;
+  }
 }
 .products-list-container {
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 0.6em;
@@ -80,43 +85,6 @@
 }
 .product-card-list:hover .button-buy-list button {
   display: block; /* Display the button when parent container is hovered */
-}
-
-/* ADMIN CARD */
-
-.product-card {
-  border: 1px solid;
-  width: 300px;
-  height: 450px;
-  padding: 10px;
-}
-
-/* change things for images */
-.product-image {
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-}
-.product-image img {
-  max-width: auto;
-  max-height: 100%;
-}
-
-.product-infos {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  align-items: center;
-}
-
-.product-text {
-  margin-top: 10px;
-}
-
-.product-text p,
-.product-price-type p {
-  margin-top: 10px;
 }
 
 /*  PAGE DETAILS PRODUCT */

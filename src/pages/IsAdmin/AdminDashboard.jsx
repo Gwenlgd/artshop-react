@@ -82,36 +82,38 @@ function AdminDashboard() {
           onSelectCategory={handleCategoryChange}
         />
         <br />
-        <h2 className="text-center">{selectedCategory}</h2>
-        <p>{filteredProducts.length} products</p>
-        <div className="products-list-container">
-          {filteredProducts.map((product) => (
-            <div key={product.id} className="product-card admin">
-              <Link to={`/product/${product.id}`}>
-                <div className="product-image">
-                  <img src={product.image} alt="img" />
-                </div>
-                <div className="product-infos">
-                  <div className="product-text">
-                    <h3>{product.title}</h3>
-                    <p>{product.category}</p>
+        <div className="main-products-container-admin">
+          <h2 className="text-center">{selectedCategory}</h2>
+          <p>{filteredProducts.length} products</p>
+          <div className="products-list-container">
+            {filteredProducts.map((product) => (
+              <div key={product.id} className="product-card">
+                <Link to={`/product/${product.id}`}>
+                  <div className="product-image">
+                    <img src={product.image} alt="img" />
                   </div>
-                  <div className="product-price-type">
-                    <p>{product.price}</p>
-                    <p>{product.type}</p>
+                  <div className="product-infos">
+                    <div className="product-text">
+                      <h3>{product.title}</h3>
+                      <p>{product.category}</p>
+                    </div>
+                    <div className="product-price-type">
+                      <p>{product.price}</p>
+                      <p>{product.type}</p>
+                    </div>
                   </div>
+                </Link>
+                <div className="button-up-del">
+                  <button onClick={() => handleUpdateProduct(product.id)}>
+                    Update
+                  </button>
+                  <button onClick={() => handleDeleteProduct(product.id)}>
+                    Delete
+                  </button>
                 </div>
-              </Link>
-              <div className="button-up-del">
-                <button onClick={() => handleUpdateProduct(product.id)}>
-                  Update
-                </button>
-                <button onClick={() => handleDeleteProduct(product.id)}>
-                  Delete
-                </button>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

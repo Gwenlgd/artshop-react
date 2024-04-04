@@ -32,9 +32,6 @@ function App() {
       <>
         {/* <NavBar onSearch={handleSearch} /> */}
         <NavBar />
-        <button onClick={handleButtonClick}>
-          Switch to {role === "admin" ? "User" : "Admin"}
-        </button>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/product/:productId" element={<ProductDetails />} />
@@ -47,6 +44,11 @@ function App() {
           <Route path="/notallowed" element={<NotAllowed />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <footer>
+          <button onClick={handleButtonClick}>
+            Switch to {role === "admin" ? "User" : "Admin"}
+          </button>
+        </footer>
       </>
     </CartProvider>
   );

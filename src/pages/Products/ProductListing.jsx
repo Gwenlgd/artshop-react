@@ -42,33 +42,35 @@ function ProductsListing() {
         onSelectCategory={handleCategoryChange}
         isTabs={false} // Render as dropdown select in the ProductsListing component
       />
-      <h2 className="text-center">{selectedCategory}</h2>
-      <p>{filteredProducts.length} products</p>
-      <div className="products-list-container">
-        {filteredProducts.map((product) => (
-          <div key={product.id} className="product-card-list">
-            <Link to={`/product/${product.id}`}>
-              <div className="product-image-list">
-                <img src={product.image} alt="img" />
-                <div className="product-infos-list">
-                  <div className="product-text-list">
-                    <h3>{product.title}</h3>
-                    <p>{product.category}</p>
-                    {/* </div>
+      <div className="main-products-container">
+        <h2 className="text-center">{selectedCategory}</h2>
+        <p>{filteredProducts.length} products</p>
+        <div className="products-list-container">
+          {filteredProducts.map((product) => (
+            <div key={product.id} className="product-card-list">
+              <Link to={`/product/${product.id}`}>
+                <div className="product-image-list">
+                  <img src={product.image} alt="img" />
+                  <div className="product-infos-list">
+                    <div className="product-text-list">
+                      <h3>{product.title}</h3>
+                      <p>{product.category}</p>
+                      {/* </div>
                 <div className="product-price-type-list"> */}
-                    <p>{product.price}</p>
-                    <p>{product.type}</p>
+                      <p>{product.price}</p>
+                      <p>{product.type}</p>
+                    </div>
                   </div>
                 </div>
+              </Link>
+              <div className="button-buy-list">
+                <button onClick={() => handleAddToCartFromListing(product)}>
+                  Buy
+                </button>
               </div>
-            </Link>
-            <div className="button-buy-list">
-              <button onClick={() => handleAddToCartFromListing(product)}>
-                Buy
-              </button>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

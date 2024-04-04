@@ -3,6 +3,46 @@
 /* .admin {
   height: 450px;
 } */
+
+/* ADMIN CARD */
+.main-products-container-admin {
+  margin: 140px 45px 0px 45px;
+}
+.product-card {
+  border: 1px solid;
+  width: 300px;
+  height: 450px;
+  padding: 10px;
+}
+
+/* change things for images */
+.product-image {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.product-image img {
+  max-width: auto;
+  max-height: 100%;
+}
+
+.product-infos {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+}
+
+.product-text {
+  margin-top: 10px;
+}
+
+.product-text p,
+.product-price-type p {
+  margin-top: 10px;
+}
+
 .card-admin {
   display: flex;
   justify-content: start;
