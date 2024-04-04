@@ -1,3 +1,11 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+:root {
+  ---bg-light-beige: #f8f5f1;
+  ---bg-beige: #eae0d5;
+  ---dark-beige: #c6ac8f;
+  ---blue-grey: #22333b;
+  ---black: #0a0908;
+}

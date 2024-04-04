@@ -36,14 +36,18 @@ function ProductsListing() {
 
   return (
     <div className="products-list">
-      <Category
-        categories={[...new Set(products.map((product) => product.category))]}
-        selectedCategory={selectedCategory}
-        onSelectCategory={handleCategoryChange}
-        isTabs={false} // Render as dropdown select in the ProductsListing component
-      />
+      <div className="container-category-list">
+        <Category
+          categories={[...new Set(products.map((product) => product.category))]}
+          selectedCategory={selectedCategory}
+          onSelectCategory={handleCategoryChange}
+          isTabs={false} // Render as dropdown select in the ProductsListing component
+        />
+      </div>
       <div className="main-products-container">
-        <h2 className="text-center">{selectedCategory}</h2>
+        <h2 className="text-center">
+          {selectedCategory === "" ? "All paintings" : selectedCategory}
+        </h2>
         <p>{filteredProducts.length} products</p>
         <div className="products-list-container">
           {filteredProducts.map((product) => (

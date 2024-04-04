@@ -6,25 +6,47 @@
 
 /* ADMIN CARD */
 .main-products-container-admin {
-  margin: 140px 45px 0px 45px;
+  margin: 100px 10px 0px 180px;
+  h2,
+  p {
+    text-align: center;
+  }
+}
+
+.welcome-message-button-add {
+  margin: 20px 0px 20px 10px;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.products-list-container-admin {
+  margin-top: 30px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2em;
+  justify-items: center;
 }
 .product-card {
   border: 1px solid;
+  border-radius: 4px;
   width: 300px;
-  height: 450px;
+  height: 500px;
   padding: 10px;
 }
 
 /* change things for images */
 .product-image {
-  height: 300px;
+  height: 350px;
   display: flex;
   justify-content: center;
   overflow: hidden;
 }
 .product-image img {
-  max-width: auto;
-  max-height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
 .product-infos {

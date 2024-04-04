@@ -70,22 +70,30 @@ function AdminDashboard() {
   if (!products) return <p>Loading..</p>;
   return (
     <div>
-      <h1>Hey Admin, welcome back to your dashboard</h1>
-      {deleteMessage && <p>{deleteMessage}</p>}
-      <br />
-      <button onClick={handleAddProduct}>Add Product</button>
-      <br />
       <div className="products-list">
-        <Category
-          categories={[...new Set(products.map((product) => product.category))]}
-          selectedCategory={selectedCategory}
-          onSelectCategory={handleCategoryChange}
-        />
-        <br />
+        <div className="container-category-admin">
+          <Category
+            categories={[
+              ...new Set(products.map((product) => product.category)),
+            ]}
+            selectedCategory={selectedCategory}
+            onSelectCategory={handleCategoryChange}
+          />
+        </div>
         <div className="main-products-container-admin">
-          <h2 className="text-center">{selectedCategory}</h2>
+          <div className="welcome-message-button-add">
+            <h1>Hey Admin, welcome back to your dashboard</h1>
+            {deleteMessage && <p>{deleteMessage}</p>}
+            <br />
+            <button onClick={handleAddProduct}>Add Product</button>
+            <br />
+          </div>
+          <h2 className="text-center">
+            {" "}
+            {selectedCategory === "" ? "All paintings" : selectedCategory}
+          </h2>
           <p>{filteredProducts.length} products</p>
-          <div className="products-list-container">
+          <div className="products-list-container-admin">
             {filteredProducts.map((product) => (
               <div key={product.id} className="product-card">
                 <Link to={`/product/${product.id}`}>
