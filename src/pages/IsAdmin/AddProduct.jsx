@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import myAPI from "../../services/api";
 
@@ -57,92 +58,92 @@ function AddProduct() {
   const uploadImage = (files) => {};
 
   return (
-    <div className="container-add-product-page">
-      <form onSubmit={handleSubmit}>
-        <span>New product</span>
-        <div className="container-add-product">
-          {/* TITLE */}
-          <input
-            name="title"
-            type="text"
-            placeholder="Title"
-            id="title"
-            value={title}
-            onChange={handleTitle}
-          />
-          {/* CATEGORY */}
-          <select
-            name="category"
-            id="category"
-            value={category}
-            onChange={handleCategory}
-          >
-            <option disabled value="-1">
-              -- Add a category --
-            </option>
-            <option value="Abstract">Abstract</option>
-            <option value="Landscape">Landscape</option>
-            <option value="Portrait">Portrait</option>
-            <option value="Still Life">Still Life</option>
-            <option value="Surrealism">Surrealism</option>
-          </select>
-          {/* DESCRIPTION*/}
-          <input
-            name="description"
-            type="text"
-            placeholder="Description"
-            id="description"
-            value={description}
-            onChange={handleDescription}
-          />
+    <div className="container-update-product-page">
+      <h2>New product</h2>
+      <div className="container-update-product">
+        <form onSubmit={handleSubmit}>
+          <div className="container-form-inputs">
+            <div className="form-left">
+              {/* TITLE */}
+              <input
+                name="title"
+                type="text"
+                placeholder="Title"
+                id="title"
+                value={title}
+                onChange={handleTitle}
+              />
+              {/* CATEGORY */}
+              <select
+                name="category"
+                id="category"
+                value={category}
+                onChange={handleCategory}
+              >
+                <option disabled value="-1">
+                  -- Choose the collection --
+                </option>
+                <option value="Dreamy Pastels">Dreamy Pastels</option>
+                <option value="Vintage Countryside">Vintage Countryside</option>
+                <option value="Ocean Therapy">Ocean Therapy</option>
+                <option value="Alpine Majesty">Alpine Majesty</option>
+                <option value="Riverside Reverie">Riverside Reverie</option>
+              </select>
+              {/* DESCRIPTION*/}
+              <input
+                name="description"
+                type="text"
+                placeholder="Description"
+                id="description"
+                value={description}
+                onChange={handleDescription}
+              />
+            </div>
+            <div className="form-right">
+              {/* TYPE */}
+              <select name="type" id="type" value={type} onChange={handleType}>
+                <option disabled value="-1">
+                  -- Add a type --
+                </option>
+                <option value="Print">Print</option>
+                <option value="Original">Original</option>
+              </select>
+              {/* PRICE */}
+              <input
+                name="price"
+                type="number"
+                placeholder="Price"
+                id="price"
+                value={price}
+                onChange={handlePrice}
+              />
+
+              {/* QUANTITY */}
+              <input
+                name="quantity"
+                type="number"
+                placeholder="Quantity"
+                id="quantity"
+                value={quantity}
+                onChange={handleQuantity}
+              />
+            </div>
+          </div>
           {/* IMAGE  NEED TO CHECK*/}
           <input
             name="image"
             type="text"
-            placeholder="Image"
+            placeholder="Image URL"
             id="image"
             value={image}
             onChange={handleImage}
           />
-          {/* IMAGE TEST*/}
-          <input
-            name="image"
-            type="file"
-            placeholder="Image"
-            id="image"
-            value={image}
-            onChange={(event) => {
-              uploadImage(event.target.files);
-            }}
-          />
-          {/* PRICE */}
-          <input
-            name="price"
-            type="number"
-            placeholder="Price"
-            id="price"
-            value={price}
-            onChange={handlePrice}
-          />
-          <select name="type" id="type" value={type} onChange={handleType}>
-            <option disabled value="-1">
-              -- Add a type --
-            </option>
-            <option value="Print">Print</option>
-            <option value="Original">Original</option>
-          </select>
-          {/* QUANTITY */}
-          <input
-            name="quantity"
-            type="number"
-            placeholder="Quantity"
-            id="quantity"
-            value={quantity}
-            onChange={handleQuantity}
-          />
           <button type="submit">Add</button>
-        </div>
-      </form>
+        </form>
+      </div>
+      <Link className="arrow-link" to="/admin">
+        Back
+      </Link>
     </div>
   );
 }
