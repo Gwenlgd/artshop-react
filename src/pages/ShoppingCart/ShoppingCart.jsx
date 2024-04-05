@@ -35,7 +35,10 @@ function ShoppingCart() {
     if (quantity <= 8) {
       return 58;
     }
-    return 70;
+    if (quantity <= 15) {
+      return 70;
+    }
+    return 120;
   }
 
   const totalQuantity = cartItems.reduce(
@@ -114,15 +117,67 @@ function ShoppingCart() {
       </div>
       <div className="display-tot">
         <h2>Your shopping Cart</h2>
+        <div className="delivery-prices">
+          <table>
+            <thead>
+              <tr>
+                <th>Quantity</th>
+                <th>Delivery Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1-2 pieces</td>
+                <td>${calculateDeliveryCost(2)}</td>
+              </tr>
+              <tr>
+                <td>3-5 pieces</td>
+                <td>${calculateDeliveryCost(5)}</td>
+              </tr>
+              <tr>
+                <td>6-8 pieces</td>
+                <td>${calculateDeliveryCost(8)}</td>
+              </tr>
+              <tr>
+                <td>9-15 pieces</td>
+                <td>${calculateDeliveryCost(15)}</td>
+              </tr>
+              <tr>
+                <td>+ 16 than pieces</td>
+                <td>${calculateDeliveryCost(16)}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <div className="cart-total">
-          <p>Total quantity: {totalQuantity} pieces </p>
-          <strong>Sous-total:</strong> {totalPrice.toFixed(2)}€
-          <p>Delivery: {deliveryCost}€</p>
-          <p>
-            <strong>Total Order:</strong>{" "}
-            {(totalPrice + deliveryCost).toFixed(2)}€
-          </p>
+          <h2>Total Order</h2>
+          <table>
+            <tbody>
+              <tr>
+                <td>Total quantity:</td>
+                <td>
+                  {totalQuantity} {totalQuantity === 1 ? "piece" : "pieces"}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Sous-total:</strong>
+                </td>
+                <td>{totalPrice.toFixed(2)}€</td>
+              </tr>
+              <tr>
+                <td>Delivery:</td>
+                <td>{deliveryCost}€</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Total Order:</strong>
+                </td>
+                <td>{(totalPrice + deliveryCost).toFixed(2)}€</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div className="button-pay">
           <button onClick={handlePay}>Pay</button>
