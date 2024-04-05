@@ -59,7 +59,13 @@ function ProductsListing() {
             <div key={product.id} className="product-card-list">
               <Link to={`/product/${product.id}`}>
                 <div className="product-image-list">
-                  <img src={product.image} alt="img" />
+                  <img
+                    src={product.image}
+                    alt="img"
+                    style={{
+                      filter: `saturate(${product.quantity ? 1 : 0})`,
+                    }}
+                  />
                   <div className="product-infos-list">
                     <div className="product-text-list">
                       <h3>{product.title}</h3>

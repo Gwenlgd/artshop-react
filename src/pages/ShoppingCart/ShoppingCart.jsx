@@ -1,11 +1,17 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "./CartContext";
+import myAPI from "../../services/api";
 import "./ShoppingCart.css";
 
 function ShoppingCart() {
-  const { cartItems, removeFromCart, handleRemoveOne, handleAddOne } =
-    useContext(CartContext);
+  const {
+    cartItems,
+    removeFromCart,
+    handleRemoveOne,
+    handleAddOne,
+    resetCart,
+  } = useContext(CartContext);
   const [orderCompleted, setOrderCompleted] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const navigate = useNavigate();
@@ -44,9 +50,16 @@ function ShoppingCart() {
 
   const deliveryCost = calculateDeliveryCost(totalQuantity);
 
-  const handlePay = () => {
-    // Handle payment logic here
-    // For demonstration purposes, let's set orderCompleted to true
+  const handlePay = async () => {
+    for (const item of cartItems) {
+      const { data } = await myAPI.get("/products/" + item.id);
+      console.log(item, data);
+      const newQuantity = Math.max(data.quantity - item.quantity, 0);
+      const newItem = { ...item, quantity: newQuantity };
+
+      await myAPI.put("/products/" + item.id, newItem);
+    }
+
     setOrderCompleted(true);
     setShowMessage(true);
     setTimeout(() => {
@@ -54,15 +67,6 @@ function ShoppingCart() {
       navigate(`/thankyoupage`);
       resetCart();
     }, 2000);
-  };
-
-  const resetCart = () => {
-    cartItems.forEach((product) => {
-      cartItems.length = 0;
-    });
-    // cartItems.forEach((product) => {
-    //   removeFromCart(product.id);
-    // });
   };
 
   return (

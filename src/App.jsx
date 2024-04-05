@@ -50,9 +50,11 @@ function App() {
         </Routes>
         {isHomePage && (
           <footer>
-            <button onClick={handleButtonClick}>
-              Switch to {role === "admin" ? "User" : "Admin"}
-            </button>
+            <div className="footer-main">
+              <button className="button-admin" onClick={handleButtonClick}>
+                Switch to {role === "admin" ? "User" : "Admin"}
+              </button>
+            </div>
           </footer>
         )}
       </>
