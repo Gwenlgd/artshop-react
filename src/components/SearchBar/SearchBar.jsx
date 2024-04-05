@@ -56,7 +56,10 @@ function SearchBar() {
     const filtered = products.filter(
       (product) =>
         product.title.toLowerCase().includes(query.toLowerCase()) ||
-        product.description.toLowerCase().includes(query.toLowerCase())
+        product.description.toLowerCase().includes(query.toLowerCase()) ||
+        product.category.toLowerCase().includes(query.toLowerCase()) ||
+        product.price.toLowerCase().includes(query.toLowerCase()) ||
+        product.type.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredProducts(filtered);
   };

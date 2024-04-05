@@ -3,7 +3,12 @@ import React, { createContext, useState } from "react";
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(() => {
+    const cart = localStorage.getItem("cart");
+    if (cart) {
+      return JSON.parse(cart);
+    } else return [];
+  });
 
   const addToCartFromListing = (product) => {
     const existingProductIndex = cartItems.findIndex(
@@ -13,8 +18,13 @@ const CartProvider = ({ children }) => {
       const updatedCartItems = [...cartItems];
       updatedCartItems[existingProductIndex].quantity += 1;
       setCartItems(updatedCartItems);
+      localStorage.setItem("cart", JSON.stringify(updatedCartItems));
     } else {
       setCartItems([...cartItems, { ...product, quantity: 1 }]);
+      localStorage.setItem(
+        "cart",
+        JSON.stringify([...cartItems, { ...product, quantity: 1 }])
+      );
     }
   };
 
@@ -26,8 +36,13 @@ const CartProvider = ({ children }) => {
       const updatedCartItems = [...cartItems];
       updatedCartItems[existingProductIndex].quantity += product.quantity;
       setCartItems(updatedCartItems);
+      localStorage.setItem("cart", JSON.stringify(updatedCartItems));
     } else {
       setCartItems([...cartItems, { ...product }]);
+      localStorage.setItem(
+        "cart",
+        JSON.stringify([...cartItems, { ...product }])
+      );
     }
   };
 
@@ -59,6 +74,11 @@ const CartProvider = ({ children }) => {
     0
   );
 
+  function resetCart() {
+    setCartItems([]);
+    localStorage.setItem("cart", JSON.stringify([]));
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -69,6 +89,7 @@ const CartProvider = ({ children }) => {
         cartItemCount,
         addToCartFromDetails,
         addToCartFromListing,
+        resetCart,
       }}
     >
       {children}
