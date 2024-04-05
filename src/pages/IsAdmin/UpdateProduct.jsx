@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 import axios from "axios";
 
 function UpdateProduct() {
@@ -71,13 +73,13 @@ function UpdateProduct() {
                 onChange={handleInputChange}
               >
                 <option disabled value="-1">
-                  -- Add a category --
+                  -- Modify a category --
                 </option>
-                <option value="Abstract">Abstract</option>
-                <option value="Landscape">Landscape</option>
-                <option value="Portrait">Portrait</option>
-                <option value="Still Life">Still Life</option>
-                <option value="Surrealism">Surrealism</option>
+                <option value="Dreamy Pastels">Dreamy Pastels</option>
+                <option value="Vintage Countryside">Vintage Countryside</option>
+                <option value="Ocean Therapy">Ocean Therapy</option>
+                <option value="Alpine Majesty">Alpine Majesty</option>
+                <option value="Riverside Reverie">Riverside Reverie</option>
               </select>
               <label>Description:</label>
               <input
@@ -115,6 +117,9 @@ function UpdateProduct() {
           </div>
         </form>
       </div>
+      <Link className="arrow-link" to="/admin">
+        Back
+      </Link>
     </div>
   );
 }
