@@ -66,10 +66,10 @@ function ProductDetails() {
           <img src={product.image} alt="img" />
         </div>
         <div className="product-infos-one-pro">
-          <div className="product-text one-pro">
+          <div className="product-text-one-pro">
             <h2>{product.title}</h2>
-            <h3>{product.category}</h3>
-            <p>{product.type}</p>
+            <h3>COLLECTION: "{product.category}"</h3>
+            <p>TYPE: {product.type}</p>
             <p className="descr-one-pro">{product.description}</p>
             <p>{product.price}</p>
             <p>

@@ -16,15 +16,18 @@ li {
 }
 
 footer {
+  bottom: 0;
+  width: 100%;
+
   height: 5vh;
   background-color: var(---blue-grey);
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 70px;
 }
 
 .footer-main {
-  width: 100%;
   display: flex;
   justify-content: center;
 }

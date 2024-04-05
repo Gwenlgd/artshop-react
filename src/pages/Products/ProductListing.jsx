@@ -51,7 +51,8 @@ function ProductsListing() {
       </div>
       <div className="main-products-container">
         <h2 className="text-center">
-          {selectedCategory === "" ? "All paintings" : selectedCategory}
+          COLLECTION: "
+          {selectedCategory === "" ? "All paintings" : selectedCategory}"
         </h2>
         <p>{filteredProducts.length} products available</p>
         <div className="products-list-container">
