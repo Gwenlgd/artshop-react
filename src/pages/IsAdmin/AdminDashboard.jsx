@@ -85,7 +85,7 @@ function AdminDashboard() {
             <h1>Hey Admin, welcome back to your dashboard</h1>
             {deleteMessage && <p>{deleteMessage}</p>}
             <br />
-            <button onClick={handleAddProduct}>Add Product</button>
+            {/* <button onClick={handleAddProduct}>Add Product</button> */}
             <br />
           </div>
           <h2 className="text-center">
