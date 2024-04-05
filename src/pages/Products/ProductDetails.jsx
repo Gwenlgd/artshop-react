@@ -10,6 +10,7 @@ function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
   const params = useParams();
   const { addToCartFromDetails } = useContext(CartContext);
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function fetchOneProduct(id) {
     try {
@@ -30,9 +31,17 @@ function ProductDetails() {
 
   const handleQuantityChange = (e) => {
     const newQuantity = parseInt(e.target.value);
-    if (!isNaN(newQuantity) && newQuantity >= 1) {
-      // Update the quantity state with the parsed value
+    if (
+      !isNaN(newQuantity) &&
+      newQuantity >= 1 &&
+      newQuantity <= product.quantity
+    ) {
       setQuantity(newQuantity);
+      setErrorMessage(""); // Clear any previous error message
+    } else {
+      setErrorMessage(
+        "Invalid quantity. Please enter a valid quantity within the available stock."
+      );
     }
   };
 
@@ -74,7 +83,7 @@ function ProductDetails() {
                   min="1"
                   value={quantity}
                   onChange={handleQuantityChange}
-
+                  // disabled={product.quantity === 0}
                   // onChange={(e) => setQuantity(parseInt(e.target.value))}
                 />
               </div>
@@ -82,6 +91,9 @@ function ProductDetails() {
                 <button onClick={() => handleAddToCart(product)}>Buy</button>
               </div>
             </div>
+          </div>
+          <div className="message-error">
+            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
           </div>
         </div>
       </div>

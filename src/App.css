@@ -16,16 +16,23 @@ li {
 }
 
 footer {
+  height: 5vh;
+  background-color: var(---blue-grey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-main {
   width: 100%;
-  height: 10vh;
   display: flex;
   justify-content: center;
 }
 
-.footer-main {
-}
-
-.button-admin button {
+.footer-main button {
+  border: none;
+  background: none;
+  color: var(---bg-light-beige);
 }
 
 body {

@@ -11,6 +11,11 @@ const CartProvider = ({ children }) => {
   });
 
   const addToCartFromListing = (product) => {
+    if (product.quantity <= 1) {
+      alert("Quantity must be greater than 1 to add to cart");
+      return;
+    }
+
     const existingProductIndex = cartItems.findIndex(
       (item) => item.id === product.id
     );
@@ -29,6 +34,10 @@ const CartProvider = ({ children }) => {
   };
 
   const addToCartFromDetails = (product) => {
+    if (product.quantity <= 1) {
+      alert("Quantity must be greater than 1 to add to cart");
+      return;
+    }
     const existingProductIndex = cartItems.findIndex(
       (item) => item.id === product.id
     );

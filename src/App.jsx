@@ -52,7 +52,8 @@ function App() {
           <footer>
             <div className="footer-main">
               <button className="button-admin" onClick={handleButtonClick}>
-                Switch to {role === "admin" ? "User" : "Admin"}
+                Admin access
+                {/* Switch to {role === "admin" ? "User" : "Admin"} */}
               </button>
             </div>
           </footer>
